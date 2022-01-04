@@ -24,7 +24,7 @@ class ReadString extends React.Component {
         // if it exists, then display its value
         return (
             <p>
-                My stored string: {myString && myString.value}
+                Stored String::::::: {myString && myString.value}
             </p>
         )
     }

@@ -3,7 +3,7 @@ import React from "react";
 class SetString extends React.Component {
     state = { stackId: null };
 
-    handleKeyDown = e => {
+    set = e => {
         // if the enter key is pressed set the value with the string
         if (e.keyCode === 13) {
             this.setValue(e.target.value);
@@ -16,6 +16,24 @@ class SetString extends React.Component {
 
         // let drizzle know we want to call the `set` method with `value`
         const stackId = contract.methods["set"].cacheSend(value, { from: drizzleState.accounts[0] });
+
+        // save the `stackId` for later reference
+        this.setState({ stackId });
+    }
+
+    update = e => {
+        // if the enter key is pressed set the value with the string
+        if (e.keyCode === 13) {
+            this.updateValue(e.target.value);
+        }
+    }
+
+    updateValue = value => {
+        const { drizzle, drizzleState } = this.props;
+        const contract = drizzle.contracts.MyStringStore;
+
+        // let drizzle know we want to call the `set` method with `value`
+        const stackId = contract.methods["update"].cacheSend(value, { from: drizzleState.accounts[0] });
 
         // save the `stackId` for later reference
         this.setState({ stackId });
@@ -38,9 +56,18 @@ class SetString extends React.Component {
     render() {
         return (
             <div>
-                <input type="text" onKeyDown={this.handleKeyDown}></input>
+                <div>
+                    <p>SET</p>
+                    <input type="text" onKeyDown={this.set}></input>
+                </div>
+                <br></br>
+                <div>
+                    <p>UPDATE</p>
+                    <input type="text" onKeyDown={this.update}></input>
+                </div>
                 <div>{this.getTxStatus()}</div>
             </div>
+
         );
     }
 }
