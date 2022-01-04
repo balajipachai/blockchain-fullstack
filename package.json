@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^2.0.0",
+    "truffle-plugin-verify": "^0.5.20"
+  },
+  "scripts": {
+    "compile": "truffle compile",
+    "migrate:ganache": "truffle migrate --network development",
+    "migrate:rinkeby": "truffle migrate --network rinkeby",
+    "migrate:mainnet": "truffle migrate --network mainnet",
+    "test": "truffle test"
+  }
+}
