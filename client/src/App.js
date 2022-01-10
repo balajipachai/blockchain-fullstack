@@ -1,6 +1,6 @@
 import './App.css';
 import React, { Component } from 'react';
-import ReadString from './ReadString';
+import ReadContract from './ReadContract';
 import SetString from './SetString';
 
 class App extends Component {
@@ -28,8 +28,8 @@ class App extends Component {
     if (this.state.loading) return "Loading Drizzle...";
     return (
       <div className="App">
-        <ReadString drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} />
-        <SetString drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} />
+        <ReadContract drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} />
+        {/* <SetString drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> */}
       </div>
     );
   }
